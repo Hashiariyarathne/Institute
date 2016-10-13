@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the tempvlate in the editor.
  */
 
 package Connection;
@@ -18,7 +18,7 @@ public class DBConnection{
     
     final private String DATABASE_NAME = "institutemanagement";
     final private String DATABASE_HOST = "localhost";
-    final private String DATABASE_PASSWORD = "123";
+    final private String DATABASE_PASSWORD = "";
     final private String DATABASE_USERNAME = "root";
     final private String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
     

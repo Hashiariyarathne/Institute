@@ -165,22 +165,28 @@ public class student implements  IPerson {
 
     @Override
     public boolean delete(String id) {
+       
+        
         DBConnection db = new DBConnection();
         Connection con = db.getDbConnection();
         Statement stm = null;
-        String sql = "delete from students where student_idS = '"+id+"'";
+        
+        
+        
+        String sql = "delete from students where id = '"+id+"'";
         
         try {
             stm = con.createStatement();
             stm.executeUpdate(sql);
             con.close();
             return true;
-        } catch (SQLException ex) {
+     ,gn                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          } catch (SQLException ex) {
             System.out.println(ex.toString());
             return false;
         }
     }
 
+    
     @Override
     public void getDetails(String id) {
       DBConnection db = new DBConnection();
@@ -191,7 +197,7 @@ public class student implements  IPerson {
             stm = con.createStatement();
            ResultSet rs = stm.executeQuery(sql);
            if (rs.next()) {
-                this.id = rs.getString("student_id");
+                this.id = rs.getString("id");
                 this.firstName = rs.getString("first_name");
                 this.lastName = rs.getString("last_name");
                 this.school = rs.getString("school");
@@ -204,17 +210,18 @@ public class student implements  IPerson {
             System.out.println(ex.toString());
         }
     }
+
     
     public boolean EditSave(String id){
     DBConnection db = new DBConnection();
         Connection con = db.getDbConnection();
         Statement stm = null;
-        String sql = "update students set first_name ='"+firstName+"', last_name = '"+lastName+"' where emp_id = '"+id+"'";
+        String sql = "update students set first_name ='"+firstName+"', last_name = '"+lastName+"' , school = '"+school+"' , dob = '"+dob+"' , current_address = '"+currentAddress+"' , home_address = '"+homeAddress+"' , mobile_number = '"+mobileNumber+"' , home_number = '"+homeNumber+"'  where id = '"+id+"'";
         
         try {
             stm = con.createStatement();
             stm.executeUpdate(sql);
-            con.close();
+            con.close(); 
             return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());

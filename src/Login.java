@@ -61,6 +61,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         jButton2.setText("Exit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,15 +119,18 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         String uName = txtUserName.getText();
         String pass = txtPass.getText();
+        
         Validator val = new Validator();
         val.length(3, 20, uName, "User Name");
-        val.length(3, 20, pass, "Psword");
+        val.length(3, 20, pass, "Password ");
+        
         if (val.validate()) {
             DBConnection db = new DBConnection();
             Connection con = db.getDbConnection();
-            String sql = "select position,name,count(*) as count from employee where name = '" + uName + "' and pass = '" + pass + "'";
+            String sql = "select position,name,count(*) as count from users where name = '" + uName + "' and password = '" + pass + "'";
             try {
                 Statement stm = con.createStatement();
                 ResultSet rs = stm.executeQuery(sql);
@@ -140,6 +148,10 @@ public class Login extends javax.swing.JFrame {
             }
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
